@@ -50,6 +50,10 @@ namespace TcpPublisher
                     }
                 }
             }
+            else
+            {
+                MessageBox.Show("Please enter the agents IPs");
+            }
         }
 
         private void Wait(string seconds)
@@ -80,6 +84,14 @@ namespace TcpPublisher
             }
 
             return new List<string>();
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            using (var helpForm = new HelpForm())
+            {
+                helpForm.ShowDialog();
+            }
         }
     }
 }
