@@ -120,6 +120,7 @@
   <data name="tbCommands.Text" xml:space="preserve">
     <value>Ping
 RestartApp | appname
+Wait | 3
 StartApp | appname
 StopApp | appname
 Copy | source | destination
