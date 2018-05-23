@@ -29,6 +29,8 @@ namespace TcpPublisher
                 {
                     var commands = GetCommands();
 
+                    Log($"--------------------------------- {ip} ---------------------------------", Color.Yellow, false);
+
                     foreach (var command in commands)
                     {
                         if (command.ToLower().StartsWith("wait"))
@@ -43,7 +45,7 @@ namespace TcpPublisher
                                 {
                                     var sentStatus = done ? "Sent" : "Failed";
 
-                                    Log($"{sentStatus} to {ip} at {DateTime.Now:yyyy-MM-dd HH:mm:ss.ffffff}\n{responseMessage}");
+                                    Log($"{sentStatus} to {ip} at {DateTime.Now:yyyy-MM-dd HH:mm:ss.ffffff}", Color.White, true);
                                 }));
                             });
                         }
@@ -69,11 +71,19 @@ namespace TcpPublisher
             return tbCommands.Text.Split('\n').Where(command => !command?.Trim().StartsWith("#") ?? false).ToArray();
         }
 
-        private void Log(string message)
+        private void Log(string message, Color color, bool logInFile = true)
         {
+            tbStatus.SelectionStart = tbStatus.TextLength;
+            tbStatus.SelectionLength = 0;
+            tbStatus.SelectionColor = color;
             tbStatus.AppendText(message + Environment.NewLine);
             tbStatus.ScrollToCaret();
-            Logger.Log(message, "ERROR");
+            tbStatus.SelectionColor = tbStatus.ForeColor;
+
+            if (logInFile)
+            {
+                Logger.Log(message, "ERROR");
+            }
         }
 
         private List<string> GetAgentIps()
@@ -91,6 +101,14 @@ namespace TcpPublisher
             using (var helpForm = new HelpForm())
             {
                 helpForm.ShowDialog();
+            }
+        }
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                btnHelp.PerformClick();
             }
         }
     }

@@ -87,6 +87,13 @@
             return string.Empty;
         }
 
+        public string MkDir(string folderPath)
+        {
+            Directory.CreateDirectory(folderPath);
+
+            return string.Empty;
+        }
+
         public string Copy(string source, string destination)
         {
             if (Directory.Exists(source))
@@ -130,6 +137,21 @@
                 }
 
                 zip.Save(destinationFilename);
+
+                return "done";
+            }
+        }
+
+        public string UnZip(string source, string destination)
+        {
+            using (ZipFile zip = ZipFile.Read(source))
+            {
+                Directory.CreateDirectory(destination);
+
+                foreach (ZipEntry e in zip)
+                {
+                    e.Extract(destination, ExtractExistingFileAction.OverwriteSilently);
+                }
 
                 return "done";
             }
@@ -212,9 +234,26 @@
             return string.Empty;
         }
 
+        public string DeleteFile(string filepath)
+        {
+            if (File.Exists(filepath))
+            {
+                File.Delete(filepath);
+            }
+
+            return string.Empty;
+        }
+
         public string Ping()
         {
             return "Pong";
+        }
+
+        public string Close()
+        {
+            Environment.Exit(0);
+
+            return null;
         }
 
         private string GetCleanFolderName(string source, string filepath)

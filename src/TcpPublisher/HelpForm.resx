@@ -125,10 +125,14 @@ StartApp | appname
 StopApp | appname
 Copy | source | destination
 Zip | source | destination
+UnZip | source | destination
 Ps | filepath
 Start | filepathOrSomethingInSystemPath
 ClearFolder | folderpath
 DeleteFolder | folderpath
+Close
+MkDir
+DeleteFile | filepath
 #Commented command</value>
   </data>
 </root>

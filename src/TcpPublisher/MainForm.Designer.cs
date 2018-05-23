@@ -32,11 +32,11 @@
             this.tbAgentIps = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnHelp = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tbCommands = new System.Windows.Forms.RichTextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.tbStatus = new System.Windows.Forms.RichTextBox();
-            this.btnHelp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1181, 601);
-            this.splitContainer1.SplitterDistance = 353;
+            this.splitContainer1.SplitterDistance = 194;
             this.splitContainer1.TabIndex = 0;
             // 
             // tbAgentIps
@@ -79,7 +79,7 @@
             this.tbAgentIps.ForeColor = System.Drawing.Color.White;
             this.tbAgentIps.Location = new System.Drawing.Point(0, 33);
             this.tbAgentIps.Name = "tbAgentIps";
-            this.tbAgentIps.Size = new System.Drawing.Size(353, 568);
+            this.tbAgentIps.Size = new System.Drawing.Size(194, 568);
             this.tbAgentIps.TabIndex = 1;
             this.tbAgentIps.Text = "";
             // 
@@ -113,9 +113,21 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tbStatus);
-            this.splitContainer2.Size = new System.Drawing.Size(824, 601);
+            this.splitContainer2.Size = new System.Drawing.Size(983, 601);
             this.splitContainer2.SplitterDistance = 300;
             this.splitContainer2.TabIndex = 6;
+            // 
+            // btnHelp
+            // 
+            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHelp.Location = new System.Drawing.Point(953, 3);
+            this.btnHelp.Name = "btnHelp";
+            this.btnHelp.Size = new System.Drawing.Size(25, 26);
+            this.btnHelp.TabIndex = 6;
+            this.btnHelp.Text = "?";
+            this.btnHelp.UseVisualStyleBackColor = true;
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // label2
             // 
@@ -139,7 +151,7 @@
             this.tbCommands.ForeColor = System.Drawing.Color.White;
             this.tbCommands.Location = new System.Drawing.Point(-1, 33);
             this.tbCommands.Name = "tbCommands";
-            this.tbCommands.Size = new System.Drawing.Size(825, 214);
+            this.tbCommands.Size = new System.Drawing.Size(984, 214);
             this.tbCommands.TabIndex = 3;
             this.tbCommands.Text = "";
             // 
@@ -147,7 +159,7 @@
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSend.Location = new System.Drawing.Point(709, 259);
+            this.btnSend.Location = new System.Drawing.Point(868, 259);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(103, 30);
             this.btnSend.TabIndex = 4;
@@ -163,21 +175,9 @@
             this.tbStatus.ForeColor = System.Drawing.Color.White;
             this.tbStatus.Location = new System.Drawing.Point(0, 0);
             this.tbStatus.Name = "tbStatus";
-            this.tbStatus.Size = new System.Drawing.Size(824, 297);
+            this.tbStatus.Size = new System.Drawing.Size(983, 297);
             this.tbStatus.TabIndex = 2;
             this.tbStatus.Text = "";
-            // 
-            // btnHelp
-            // 
-            this.btnHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHelp.Location = new System.Drawing.Point(794, 3);
-            this.btnHelp.Name = "btnHelp";
-            this.btnHelp.Size = new System.Drawing.Size(25, 26);
-            this.btnHelp.TabIndex = 6;
-            this.btnHelp.Text = "?";
-            this.btnHelp.UseVisualStyleBackColor = true;
-            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // MainForm
             // 
@@ -186,8 +186,11 @@
             this.ClientSize = new System.Drawing.Size(1181, 601);
             this.Controls.Add(this.splitContainer1);
             this.ForeColor = System.Drawing.Color.White;
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "Tcp Publisher";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);

@@ -56,7 +56,7 @@
             this.tbCommands.Location = new System.Drawing.Point(8, 33);
             this.tbCommands.Name = "tbCommands";
             this.tbCommands.ReadOnly = true;
-            this.tbCommands.Size = new System.Drawing.Size(471, 256);
+            this.tbCommands.Size = new System.Drawing.Size(536, 366);
             this.tbCommands.TabIndex = 3;
             this.tbCommands.Text = resources.GetString("tbCommands.Text");
             // 
@@ -65,7 +65,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(491, 301);
+            this.ClientSize = new System.Drawing.Size(556, 411);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tbCommands);
             this.ForeColor = System.Drawing.Color.White;
