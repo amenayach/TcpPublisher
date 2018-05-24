@@ -23,13 +23,18 @@ namespace TcpPublisher
         {
             var agents = GetAgentIps();
 
+            var ipColors = GetIpsColors(agents, out bool noDuplicate);
+
+            if (!noDuplicate)
+            {
+                return;
+            }
+
             if (agents?.Any() ?? false)
             {
                 foreach (var ip in agents)
                 {
                     var commands = GetCommands();
-
-                    Log($"--------------------------------- {ip} ---------------------------------", Color.Yellow, false);
 
                     foreach (var command in commands)
                     {
@@ -45,7 +50,7 @@ namespace TcpPublisher
                                 {
                                     var sentStatus = done ? "Sent" : "Failed";
 
-                                    Log($"{sentStatus} to {ip} at {DateTime.Now:yyyy-MM-dd HH:mm:ss.ffffff}", Color.White, true);
+                                    Log($"{sentStatus} to {ip} at {DateTime.Now:yyyy-MM-dd HH:mm:ss.ffffff}", ipColors[ip], true);
                                 }));
                             });
                         }
@@ -56,6 +61,33 @@ namespace TcpPublisher
             {
                 MessageBox.Show("Please enter the agents IPs");
             }
+        }
+
+        private Dictionary<string, Color> GetIpsColors(List<string> agents, out bool noDuplicate)
+        {
+            noDuplicate = true;
+
+            var result = new Dictionary<string, Color>();
+
+            if (agents?.Any() ?? false)
+            {
+                var random = new Random();
+                
+                foreach (var ip in agents)
+                {
+                    if (result.ContainsKey(ip))
+                    {
+                        noDuplicate = false;
+                        MessageBox.Show("Duplicate IPs !!!");
+
+                        return null;
+                    }
+
+                    result.Add(ip, Color.FromArgb(random.Next(256), random.Next(256), random.Next(256)));
+                }
+            }
+
+            return result;
         }
 
         private void Wait(string seconds)
